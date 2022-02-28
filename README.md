@@ -29,7 +29,7 @@ To install this application please follow these instructions:
     DB_PWD='yourPassword'
 ```
 - NOTE: yourPassword is refferring to your mysql password you created, keep DB_NAME and DB_USER the same.
-- Please type ```mysql -u root -p``` on your CLI or Terminal and enter your mysql password.
+- Change into the db repository and type ```mysql -u root -p``` on your CLI or Terminal and enter your mysql password.
 - Please type ```source schema.sql;``` in your CLI or Terminal, if successful then type ```quit```.
 - To start make sure your are in your root repository and run ```npm start``` or ```node server.js```.
 - To make changes to the files without having to reset the server everytime please run ```npm watch```.
