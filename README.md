@@ -57,4 +57,4 @@ To install this application please follow these instructions:
 
 ## Links
 - Link: [GitHub](https://github.com/seanscott95/E-Commerce-Back-End)
-- Link: [Video-Demo]()
+- Link: [Video-Demo](https://drive.google.com/file/d/114dbkBCCNiXdinuHK4NA01PJyUcy16jc/view)
