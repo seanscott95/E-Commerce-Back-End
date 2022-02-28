@@ -1,10 +1,11 @@
+// Imports express router and models
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
-// The `/api/tags` endpoint
-
+// GET route for `/api/tags`
 router.get('/', async (req, res) => {
-  try { 
+  try {
+    // Finds all the tags and the associated products
     const tagData = await Tag.findAll({
       include: [{ model: Product }],
     });
@@ -12,12 +13,12 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  // find all tags
-  // be sure to include its associated Product data
 });
 
+// GET route for `/api/tags/:id` that looks for a specific id
 router.get('/:id', async (req, res) => {
   try {
+    // Find one tag by its id value and includes associated products
     const tagData = await Tag.findByPk(req.params.id, {
       include: [
         { model: Product }],
@@ -26,12 +27,13 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
 });
 
+
+// POST route for `/api/tags/`
 router.post('/', async (req, res) => {
   try {
+    // Creates a new tag
     const tagData = await Tag.create({
       id: req.params.id,
       tag_name: req.body.tag_name,
@@ -40,31 +42,33 @@ router.post('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  // create a new tag
 });
 
+// PUT route for `/api/tags/id`
 router.put('/:id', async (req, res) => {
   try {
+    // Updates a tag by searching with its id
     const newTagData = await Tag.update(req.body, {
       where: {
         id: req.params.id,
       },
     })
     res.status(200).json(newTagData);
-    // update a category by its `id` value
   } catch (err) {
     res.status(400).json(err);
   }
-  // update a tag's name by its `id` value
 });
 
+// DELETE route for `/api/tags/id` using an id
 router.delete('/:id', async (req, res) => {
-  try {
+  try {    
+    // Deletes a tag by searching for the id
     const tagData = await Tag.destroy({
       where: {
         id: req.params.id,
       },
     });
+    // Checks to see if tag data exists and if not then replies with the message
     if (!tagData) {
       res.status(404).json({ message: 'No tag found with that id!' });
       return;
@@ -73,7 +77,6 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  // delete on tag by its `id` value
 });
 
 module.exports = router;
