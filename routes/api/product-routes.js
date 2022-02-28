@@ -5,7 +5,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // GET route for `/api/product`
 router.get('/', async (req, res) => {
   try {
-    // Finds all the products and the associated category and tags
+    // Finds all the products and the associated categories and tags
     const productData = await Product.findAll({
     include: [
       { model: Category }, 
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 // GET route for `/api/product/:id` that looks for a specific id
 router.get('/:id', async (req, res) => {
   try {    
-    // Find one product by its id value and includes associated category and tags
+    // Find one product by its id value and includes associated categories and tags
     const productData = await Product.findByPk(req.params.id, {
       include: [
         { model: Category }, 
